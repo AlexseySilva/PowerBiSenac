@@ -31,9 +31,14 @@ fig_date = px.bar(df_filtered, x="Data", y="Total", color="Cidade", title="Fatur
 col1.plotly_chart(fig_date, use_container_width=True)  # Plota o gráfico na primeira coluna
 
 # Gráfico de faturamento por tipo de produto
-fig_prod = px.bar(df_filtered, x="Data", y="Linha de Produtos", 
-                  color="Cidade", title="Faturamento por tipo de produto", orientation="h")
-col2.plotly_chart(fig_prod, use_container_width=True)  # Plota o gráfico na segunda coluna
+fig_prod = px.bar(
+    df_filtered,
+    x="Total",
+    y="Linha de Produtos",
+    color="Cidade",
+    title="Faturamento por tipo de produto",
+    orientation="h"
+)  # Plota o gráfico na segunda coluna
 
 # Gráfico de faturamento total por filial
 city_total = df_filtered.groupby("Cidade")[["Total"]].sum().reset_index()  # Agrupa por cidade e soma o total
